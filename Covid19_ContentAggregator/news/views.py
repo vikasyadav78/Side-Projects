@@ -7,16 +7,16 @@ from bs4 import BeautifulSoup
 
 # Getting news from Times of India
 
-times_of_india = requests.get("https://timesofindia.indiatimes.com/coronavirus")
+times_of_india = requests.get("https://timesofindia.indiatimes.com/india/coronavirus-live-updates-india-will-play-a-leading-role-in-global-revival-pm-modi-says/liveblog/76843875.cms")
 soup = BeautifulSoup(times_of_india.content,'html.parser')
-toi_headings = soup.find_all('h2')
+toi_headings = soup.find_all("div",{"class":"_1KydD"})
 
-toi_headings = toi_headings[0:-13] # removing footer links
+toi_headings
 
 toi_news = []
 
 for th in toi_headings:
-    toi_news.append(th.text)   
+    toi_news.append(th.text)
 
 
 
